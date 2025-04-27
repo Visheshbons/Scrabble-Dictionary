@@ -1,24 +1,27 @@
-let scrabbleWords = new Set(); // <- using Set, not array
+let scrabbleWords = new Set();
 
 fetch('scrabbleWords.json')
     .then(response => response.json())
     .then(wordsArray => {
-        // Normalize and put into Set
         scrabbleWords = new Set(
             wordsArray.map(word => word.trim().toLowerCase())
         );
         console.log(`Loaded ${scrabbleWords.size} words`);
 
-        // Enable form after loading
-        document.getElementById('wordInput').disabled = false;
-        document.querySelector('#wordForm input[type="submit"]').disabled = false;
+        // Hide loader, show form with fade-in
+        document.getElementById('loader').style.display = 'none';
+        const wordForm = document.getElementById('wordForm');
+        wordForm.style.display = 'block';  // Make the form block-level
+        setTimeout(() => wordForm.classList.add('show'), 50);  // Add fade-in class
     })
     .catch(error => {
         console.error('Error loading words:', error);
+        document.getElementById('loader').innerHTML = "<p>⚠️ Failed to load words. Try refreshing.</p>";
     });
 
 const form = document.getElementById('wordForm');
 const input = document.getElementById('wordInput');
+const result = document.getElementById('result');
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -28,9 +31,11 @@ form.addEventListener('submit', function(event) {
 });
 
 function checkWord(word) {
-    if (scrabbleWords.has(word)) { // <- .has() instead of .includes()
-        alert("✅ Valid Scrabble Word!");
+    if (scrabbleWords.has(word)) {
+        result.innerHTML = `✅ <b>${word}</b> is a valid Scrabble word!`;
+        result.style.color = 'green';
     } else {
-        alert("❌ Not a Valid Word.");
+        result.innerHTML = `❌ <b>${word}</b> is not a valid word.`;
+        result.style.color = 'red';
     }
 }

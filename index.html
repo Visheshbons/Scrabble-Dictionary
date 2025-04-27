@@ -1,17 +1,28 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrabble Word Checker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrabble Word Checker</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Scrabble Word Checker</h1>
 
-    <form id="wordForm">
-        <input type="text" id="wordInput" placeholder="Check a word..." required disabled>
-        <input type="submit" value="Check" disabled>
-    </form>    
+  <h1 style="text-align: center;">Scrabble Word Checker</h1>
 
-    <script src="index.js"></script>
+  <!-- Loader Screen -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Loading dictionary... Please wait.</p>
+  </div>
+
+  <!-- Main Form -->
+  <form id="wordForm">
+    <input type="text" id="wordInput" placeholder="Type a word..." required>
+    <input type="submit" value="Check">
+  </form>
+
+  <div id="result" style="text-align: center; margin-top: 20px; font-size: 1.5em;"></div>
+
+  <script src="index.js"></script>
 </body>
 </html>
