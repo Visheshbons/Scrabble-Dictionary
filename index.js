@@ -32,12 +32,16 @@ form.addEventListener('submit', function(event) {
     checkWord(word);
 });
 
+function capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+};
+
 function checkWord(word) {
     if (scrabbleWords.has(word)) {
-        result.innerHTML = `✅ <b>${word}</b> is a valid Scrabble word!`;
+        result.innerHTML = `<b>${capitalizeWord(word)}</b> is a valid Scrabble word!`;
         result.style.color = 'green';
     } else {
-        result.innerHTML = `❌ <b>${word}</b> is not a valid word.`;
+        result.innerHTML = `<b>${capitalizeWord(word)}</b> is not a valid word.`;
         result.style.color = 'red';
     }
 }
