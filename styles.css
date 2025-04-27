@@ -1,5 +1,10 @@
 body {
     background-color: #205e58;
+    color: azure;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
 }
 
 /* Simple CSS Spinner */
@@ -38,8 +43,66 @@ body {
     opacity: 1; /* Fade in the form */
 }
 
+/* Styling for the text inputs */
+#wordInput {
+    background-color: #205e58; /* Match background */
+    color: azure; /* Text color */
+    border: 2px solid #2f8d76; /* Subtle border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Some padding for comfort */
+    font-size: 1.1em; /* Slightly bigger text */
+    width: 200px; /* Set a fixed width */
+    margin-bottom: 15px; /* Space below input */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for focus */
+}
+
+/* Focus effect */
+#wordInput:focus {
+    background-color: #1d5547; /* Darker background for better focus contrast */
+    border-color: #19a079; /* Lighter green border */
+    box-shadow: 0 0 10px rgba(19, 223, 128, 0.5); /* Soft glow when focused */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styles */
+#wordForm input[type="submit"] {
+    background-color: #2f8d76; /* Button color */
+    color: white; /* Button text color */
+    border: none;
+    padding: 12px 20px; /* Button size */
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#wordForm input[type="submit"]:hover {
+    background-color: #1d5547; /* Darken button on hover */
+}
+
+/* Result text styling */
 #result {
     text-align: center;
     margin-top: 20px;
     font-size: 1.5em;
+}
+
+/* Responsive input size adjustments */
+@media (max-width: 600px) {
+    #wordInput {
+        width: 80%; /* Make the input width responsive */
+        font-size: 1em; /* Slightly smaller font */
+    }
+
+    #wordForm input[type="submit"] {
+        width: 80%; /* Make the button responsive */
+        font-size: 1em;
+    }
+}
+
+/* Error styling for failed word load */
+#errorMessage {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 20px;
 }

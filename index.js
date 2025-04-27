@@ -16,7 +16,9 @@ fetch('scrabbleWords.json')
     })
     .catch(error => {
         console.error('Error loading words:', error);
-        document.getElementById('loader').innerHTML = "<p>⚠️ Failed to load words. Try refreshing.</p>";
+        document.getElementById('loader').style.display = 'none';
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.innerHTML = "⚠️ Failed to load dictionary. Please refresh the page.";
     });
 
 const form = document.getElementById('wordForm');
